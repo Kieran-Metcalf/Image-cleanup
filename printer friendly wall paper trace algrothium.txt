@@ -1,0 +1,47 @@
+Title this is a script for image of wallpaper
+programs text editor 
+objective to accept a bitmap and scan all pixels and change the file into a 2 tone image
+the print out than can be used to recreate the heritage wallpaper
+the 2 colours are 
+programs to consider are GIMP
+
+SELECT pixel 0,0,
+READ Hue, Sat and Lum
+	IF Hue is between 20 and 30 then 
+		
+	THEN change to colour Hue:=168 Sat:=142 Lum:=120 Red:=82 Green:=52 Blue:=202 *note this human eye perceives this as dark blue
+OTHERWISE change to Hue:=160 Sat:=0 Lum:=240 Red:=255 Green:=255 Blue:=255 *this is white completely saturated and maximum photon flux, hue can be anything because it is multiplied by zero
+
+*range hue 0 to 239 sat 0 to 240 Lum 0 to 240 RGB all 0 to 255
+*
+*hue variety of color caused by admixture of another, is the rainbow specifies the human eye reception of frequency of visible light quantised into pi=positive whole numbers between zero and 239
+*saturation free from admixture of white, is the fraction of the hue which is displayed 0 being just the Luminosity showing
+*Luminosity; a measure of the amount of luminescence light given off by a solid, a positive integer value proportional to the rate of photons emitted by the pixel. Analogous to brightness
+
+* Summary Luminosity is the greyscale from black := 0 to white:= 240 and shades of grey in-between, Saturation is the fraction of hue added and Hue is the colour
+
+
+Sample report:-
+lum (greyscale) is always half everywhere; around 130 so can not use that as a decider
+hue (color) is mostly blue when sampled form the leaves but varies
+sat (grey*color mixture) are lo values for all the pixels
+
+*so Hue is the only possibility to use in the colour match algorithm
+
+Import bitmap wallpaper.btm
+Define variable Hue :=positive integer between 0 and 239
+Sat
+Lum
+start pixel X,Y
+Define Xmax:= 1919
+Ymax:= 2560
+IF 122<Hue<192
+THEN set Hue = 168 Sat = 142 Lum = 120
+IF 0 < Hue < 121 OR 192 < Hue < 239
+THEN set Hue=160 Sat=0 Lum=240
+*move selected pixel raster scan across and down bitmap
+X=X+1
+loop until X=Xmax
+then X=0, Y=Y=1
+loop until X=Xmax 1919
+loop until Y=Ymax 2560
